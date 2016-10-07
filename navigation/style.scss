@@ -1,5 +1,8 @@
 $mobile-nav-width: 200px;
 $mobile-nav-offset: 150px;
+$spacing: 20px;
+$transition-all: all 0.15s ease;
+$body-padding-left: $mobile-nav-width - $mobile-nav-offset + $spacing;
 
 html, body {
   height: 100%;
@@ -9,17 +12,24 @@ html, body {
 }
 
 body {
-  transition: all 0.15s ease;
+  transition: $transition-all;
+  padding: $spacing $spacing $spacing $body-padding-left;
   &.nav-active {
-    padding-left: $mobile-nav-width;
+    padding-left: $mobile-nav-width + $spacing;
+
+    nav {
+      left: 0;
+    }
   }
 }
 
 nav {
+  transition: $transition-all;
   width: $mobile-nav-width;
   height: 100%;
-  position: relative;
   border: 2px solid red;
+  position: absolute;
+  top: 0;
   left: -$mobile-nav-offset;
 }
 
@@ -27,4 +37,16 @@ nav {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.nav__item--dropdown {
+  .nav__list--sub {
+    display: none;
+  }
+
+  &.is-active {
+    .nav__list--sub {
+      display: block;
+    }
+  }
 }
