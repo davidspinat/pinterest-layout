@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/davidspinat/pinterest-layout.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "davidspinat",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/davidspinat/pinterest-layout/issues"
   },
