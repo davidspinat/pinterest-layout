@@ -1,0 +1,25 @@
+{
+  "name": "pinterest-layout",
+  "version": "1.0.0",
+  "description": "Pinterest grid layout showcase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server",
+    "watch": "node-sass css-only.scss css-only.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidspinat/pinterest-layout.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidspinat/pinterest-layout/issues"
+  },
+  "homepage": "https://github.com/davidspinat/pinterest-layout#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0",
+    "node-sass": "^3.10.1"
+  }
+}

@@ -1,0 +1,76 @@
+$desktop: 'desktop';
+$spacing: 20px;
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 760px) { @content ; }
+  }
+}
+
+@mixin column($amount) {
+  -webkit-column-count: $amount;
+  -moz-column-count: $amount;
+  column-count: $amount;
+}
+
+@mixin avoidColumnBreak() {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  column-break-inside: avoid;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    padding: $spacing;
+  }
+
+  @include breakpoint($desktop) {
+    p {
+      @include column(2);
+    }
+  }
+}
+
+.grid {
+  @include column(3);
+  padding: $spacing;
+
+  article {
+    height: 200px;
+    padding: $spacing / 2 0;
+    @include avoidColumnBreak()
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    div {
+      padding: $spacing;
+      background: #777;
+      height: 100%;
+    }
+  }
+
+  article:nth-child(odd) {
+    height: 400px;
+  }
+
+}
