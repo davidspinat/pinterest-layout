@@ -1,25 +1,42 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
 html, body {
   height: 100%;
   width: 100%;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  overflow-x: hidden; }
 
 body {
-  transition: all 0.15s ease;
+  transition: padding 0.15s ease;
   padding: 20px 20px 20px 70px; }
   body.nav-active {
     padding-left: 220px; }
     body.nav-active nav {
       left: 0; }
+  @media (min-width: 720px) {
+    body {
+      padding: 60px 20px 20px; }
+      body.nav-active {
+        padding-left: 20px; } }
 
 nav {
-  transition: all 0.15s ease;
+  transition: left 0.15s ease;
   width: 200px;
   height: 100%;
-  border: 2px solid red;
+  background: #ccc;
   position: absolute;
   top: 0;
   left: -150px; }
+  @media (min-width: 720px) {
+    nav {
+      height: 40px;
+      width: 100%;
+      left: 0; } }
 
 .nav__button {
   position: absolute;
@@ -31,3 +48,25 @@ nav {
 
 .nav__item--dropdown.is-active .nav__list--sub {
   display: block; }
+
+@media (min-width: 720px) {
+  .nav__list {
+    list-style: none;
+    padding: 0 10px;
+    margin: 0; }
+    .nav__list li {
+      line-height: 40px;
+      padding: 0 10px;
+      display: inline-block; }
+      .nav__list li:hover {
+        background: #999; }
+  .nav__item--dropdown {
+    position: relative; }
+  .nav__list--sub {
+    position: absolute;
+    background: #aaa;
+    left: 0;
+    margin: 0;
+    padding: 0; }
+    .nav__list--sub li {
+      display: block; } }

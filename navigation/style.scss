@@ -1,19 +1,36 @@
+$desktop: 'desktop';
 $mobile-nav-width: 200px;
 $mobile-nav-offset: 150px;
 $spacing: 20px;
-$transition-all: all 0.15s ease;
+$nav-height: $spacing * 2;
 $body-padding-left: $mobile-nav-width - $mobile-nav-offset + $spacing;
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 720px) { @content ; }
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 html, body {
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
 }
 
 body {
-  transition: $transition-all;
+  transition: padding 0.15s ease;
   padding: $spacing $spacing $spacing $body-padding-left;
+
   &.nav-active {
     padding-left: $mobile-nav-width + $spacing;
 
@@ -21,16 +38,30 @@ body {
       left: 0;
     }
   }
+
+  @include breakpoint($desktop) {
+    padding: $nav-height + $spacing $spacing $spacing;
+
+    &.nav-active {
+      padding-left: $spacing;
+    }
+  }
 }
 
 nav {
-  transition: $transition-all;
+  transition: left 0.15s ease;
   width: $mobile-nav-width;
   height: 100%;
-  border: 2px solid red;
+  background: #ccc;
   position: absolute;
   top: 0;
   left: -$mobile-nav-offset;
+
+  @include breakpoint($desktop) {
+    height: $nav-height;
+    width: 100%;
+    left: 0;
+  }
 }
 
 .nav__button {
@@ -46,6 +77,40 @@ nav {
 
   &.is-active {
     .nav__list--sub {
+      display: block;
+    }
+  }
+}
+
+@include breakpoint($desktop) {
+  .nav__list {
+    list-style: none;
+    padding: 0 $spacing / 2;
+    margin: 0;
+
+    li {
+      line-height: $nav-height;
+      padding: 0 $spacing / 2;
+      display: inline-block;
+
+      &:hover {
+        background: #999;
+      }
+    }
+  }
+
+  .nav__item--dropdown {
+    position: relative;
+  }
+
+  .nav__list--sub {
+    position: absolute;
+    background: #aaa;
+    left: 0;
+    margin: 0;
+    padding: 0;
+
+    li {
       display: block;
     }
   }
