@@ -6,13 +6,16 @@
     body.className = body.className !== navigationActive ? navigationActive : '';
   });
 
+  var dropdownButtons = document.getElementsByClassName('nav__dropdown');
   var dropdownActive = 'nav__item--dropdown is-active';
   function dropdownClick(e) {
+    [].forEach.call(dropdownButtons, function (dropdownButton) {
+      dropdownButton.parentNode.className = 'nav__item--dropdown';
+    });
     var parentNode = e.currentTarget.parentNode;
     parentNode.className = parentNode.className !== dropdownActive ? dropdownActive : 'nav__item--dropdown';
   }
 
-  var dropdownButtons = document.getElementsByClassName('nav__dropdown');
   [].forEach.call(dropdownButtons, function (dropdownButton) {
     dropdownButton.addEventListener('click', dropdownClick);
   });
