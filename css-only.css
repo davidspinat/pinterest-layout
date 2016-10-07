@@ -15,28 +15,37 @@ header h1 {
 header p {
   padding: 20px; }
 
-@media (min-width: 760px) {
+@media (min-width: 960px) {
   header p {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2; } }
 
 .grid {
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  column-count: 3;
   padding: 20px; }
+  @media (min-width: 560px) {
+    .grid {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2; } }
+  @media (min-width: 960px) {
+    .grid {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3; } }
   .grid article {
     height: 200px;
-    padding: 10px 0;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    column-break-inside: avoid; }
+    padding: 10px 0; }
+    @media (min-width: 560px) {
+      .grid article {
+        -webkit-column-break-inside: avoid;
+        page-break-inside: avoid;
+        column-break-inside: avoid; } }
     .grid article:first-child {
       margin-top: 0; }
+    .grid article:nth-child(odd) {
+      height: 400px; }
     .grid article div {
       padding: 20px;
       background: #777;
       height: 100%; }
-  .grid article:nth-child(odd) {
-    height: 400px; }

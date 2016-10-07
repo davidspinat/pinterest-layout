@@ -1,9 +1,13 @@
 $desktop: 'desktop';
+$tablet: 'tablet';
 $spacing: 20px;
 
 @mixin breakpoint($point) {
+  @if $point == tablet {
+    @media (min-width: 560px) { @content ; }
+  }
   @if $point == desktop {
-    @media (min-width: 760px) { @content ; }
+    @media (min-width: 960px) { @content ; }
   }
 }
 
@@ -50,16 +54,30 @@ header {
 }
 
 .grid {
-  @include column(3);
   padding: $spacing;
+
+  @include breakpoint($tablet) {
+    @include column(2);
+  }
+
+  @include breakpoint($desktop) {
+    @include column(3);
+  }
 
   article {
     height: 200px;
     padding: $spacing / 2 0;
-    @include avoidColumnBreak()
+
+    @include breakpoint($tablet) {
+      @include avoidColumnBreak();
+    }
 
     &:first-child {
       margin-top: 0;
+    }
+
+    &:nth-child(odd) {
+      height: 400px;
     }
 
     div {
@@ -68,9 +86,4 @@ header {
       height: 100%;
     }
   }
-
-  article:nth-child(odd) {
-    height: 400px;
-  }
-
 }
