@@ -58,6 +58,7 @@ nav {
   left: -$mobile-nav-offset;
 
   @include breakpoint($desktop) {
+    position: fixed;
     height: $nav-height;
     width: 100%;
     left: 0;
@@ -68,6 +69,10 @@ nav {
   position: absolute;
   top: 10px;
   right: 10px;
+
+  @include breakpoint($desktop) {
+    display: none;
+  }
 }
 
 .nav__item--dropdown {
