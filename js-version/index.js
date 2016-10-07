@@ -9,15 +9,17 @@
 
     var articleWidth = parseInt((gridWidth - columnSpacing * columnCount ) / columnCount, 10);
 
-    var fromTop = -500;
     var fromLeft = 0;
+    var fromTopByRow = [0, 0 , 0];
+
     [].forEach.call(articles, function (article, index) {
       var currentRow = index % 3;
-      fromLeft += articleWidth + columnSpacing * currentRow;
+      var fromTop = fromTopByRow[currentRow];
+      fromLeft += articleWidth + columnSpacing + currentRow;
 
-      if ((index) % 3 === 0) {
+      fromTopByRow[currentRow] += article.clientHeight + columnSpacing * 2;
+      if (currentRow === 0) {
         fromLeft = 0;
-        fromTop += 500;
       }
 
       article.setAttribute('style',
