@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server",
-    "watch": "node-sass css-version/style.scss css-version/style.css --watch"
+    "watch": "node-sass css-version/style.scss css-version/style.css --watch",
+    "watch-navigation": "node-sass navigation/style.scss navigation/style.css --watch"
   },
   "repository": {
     "type": "git",
