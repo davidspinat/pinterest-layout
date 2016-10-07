@@ -106,6 +106,19 @@ nav {
 
   .nav__item--dropdown {
     position: relative;
+
+    &.is-active {
+      .nav__list--sub {
+        display: none;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      .nav__list--sub {
+        display: inline-block;
+      }
+    }
   }
 
   .nav__list--sub {

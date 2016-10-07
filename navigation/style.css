@@ -66,6 +66,10 @@ nav {
         background: #999; }
   .nav__item--dropdown {
     position: relative; }
+    .nav__item--dropdown.is-active .nav__list--sub {
+      display: none; }
+    .nav__item--dropdown:hover .nav__list--sub, .nav__item--dropdown:focus .nav__list--sub {
+      display: inline-block; }
   .nav__list--sub {
     position: absolute;
     background: #aaa;
